@@ -9,9 +9,7 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                dir('tests') {
-                    bat 'npm run tests'
-                }
+                bat 'cd tests && npm run tests'
             }
         }
     }
