@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                bat 'npm install -g playwright'
+                bat 'npm install -D @playwright/test'
                 bat 'npm install'
             }
         }
