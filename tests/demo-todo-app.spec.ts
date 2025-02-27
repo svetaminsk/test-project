@@ -2,8 +2,8 @@ import { test, expect, type Page } from '@playwright/test';
 import path from 'path';
 
 
-
-test('should allow upload a file', async ({ page }) => {
+test.describe('Upload File', () => {
+  test('should allow to upload a file', async ({ page }) => {
     await page.goto('https://practice.expandtesting.com/upload');
     
     const fileChooserPromise = page.waitForEvent('filechooser');
@@ -12,4 +12,5 @@ test('should allow upload a file', async ({ page }) => {
     await fileChooser.setFiles(path.join(__dirname, 'Book1.xlsx'));
     await page.getByTestId('file-submit').click();
     expect(await page.locator('h1').textContent()).toEqual('File Uploaded!');
+  })
 })
