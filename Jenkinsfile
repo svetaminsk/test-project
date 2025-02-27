@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                bat 'npx playwright install --with-deps'
+                bat 'npm install -g playwright'
                 bat 'npm install'
             }
         }
         stage('Run Tests') {
             steps {
                 dir('tests') {
-                    bat 'npx playwright test demo-todo-app.spec.ts'
+                    bat 'npx playwright test'
                 }
             }
         }
