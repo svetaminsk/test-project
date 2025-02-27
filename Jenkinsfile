@@ -9,7 +9,9 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                bat 'npx playwright test'
+                dir('tests') {
+                    bat 'npx playwright test'
+                }
             }
         }
     }
