@@ -11,14 +11,6 @@ pipeline {
             steps {
                 bat 'cd tests && npm run tests'
             }
-             post {
-                always {
-                    allure includeProperties:
-                     false,
-                     jdk: '',
-                     results: [[path: 'allure-results']]
-                }
-            }
         }
     }
 }
