@@ -10,17 +10,9 @@ pipeline {
         stage('Run Tests') {
             steps {
                 dir('tests') {
-                    bat 'npx playwright test --project=webkit'
+                    bat 'npm run tests'
                 }
             }
-        }
-    }
-    post {
-        always {
-            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
-        }
-        failure {
-            echo 'Tests failed! Check the report for details.'
         }
     }
 }
