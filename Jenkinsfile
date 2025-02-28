@@ -3,24 +3,14 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                bat 'npm install -D @playwright/test'
                 bat 'npm install'
+                bat 'npx playwright install --with-deps'
             }
         }
         stage('Run Tests') {
             steps {
-                dir('tests') {
-                    bat 'npx playwright test'
-                }
+                bat 'cd tests && npm run tests'
             }
-        }
-    }
-    post {
-        always {
-            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
-        }
-        failure {
-            echo 'Tests failed! Check the report for details.'
         }
     }
 }
