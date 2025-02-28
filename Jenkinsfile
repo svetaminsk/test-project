@@ -12,5 +12,10 @@ pipeline {
                 bat 'cd tests && npm run tests'
             }
         }
+        stage('Allure') {
+            steps {
+                allure results: [ [ path: 'allure'] ]
+            }
+        } 
     }
 }
